@@ -1,4 +1,4 @@
-const socket = io("ws://localhost:4000");
+const socket = io('https://io-socket.onrender.com');
 
 const msgInput = document.querySelector("#message");
 const nameInput = document.querySelector("#name");
@@ -20,19 +20,19 @@ function sendMessage(e) {
   msgInput.focus();
 }
 
-function enterRoom(e) {
-  e.preventDefault();
-  if (nameInput.value && chatRoom.value) {
-    socket.emit("message", {
-      name: nameInput.value,
-      text: msgInput.value,
-    });
-  }
-}
+// function enterRoom(e) {
+//   e.preventDefault();
+//   if (nameInput.value && chatRoom.value) {
+//     socket.emit("message", {
+//       name: nameInput.value,
+//       text: msgInput.value,
+//     });
+//   }
+// }
 
 document.querySelector(".form-msg").addEventListener("submit", sendMessage);
 
-document.querySelector(".form-msg").addEventListener("submit", enterRoom);
+// document.querySelector(".form-msg").addEventListener("submit", enterRoom);
 
 msgInput.addEventListener("keypress", () => {
   socket.emit("activity", nameInput.value);
@@ -93,15 +93,15 @@ function showUsers(users) {
   }
 }
 
-function showRooms(rooms) {
-  usersList.textContent = "";
-  if (rooms) {
-    usersList.innerHTML = "<em>Active Rooms:</em>";
-    users.forEach((room, i) => {
-      roomList.textContent += `${room}`;
-      if (rooms.length > 1 && i !== rooms.length - 1) {
-        roomList.textContent += ",";
-      }
-    });
-  }
-}
+// function showRooms(rooms) {
+//   usersList.textContent = "";
+//   if (rooms) {
+//     usersList.innerHTML = "<em>Active Rooms:</em>";
+//     users.forEach((room, i) => {
+//       roomList.textContent += `${room}`;
+//       if (rooms.length > 1 && i !== rooms.length - 1) {
+//         roomList.textContent += ",";
+//       }
+//     });
+//   }
+// }
